@@ -122,9 +122,10 @@ alias ll='ls -alFh'
 #alias cdic='cd ~/Library/Mobile\ Documents' # Go to icloud folder
 #alias cdtl='cd /usr/local/texlive/' # Go to the texlive folder
 
-alias cde='cd ~/.emacs.d'
-alias cdnv='cd ~/.config/nvim'
-alias cdvi='cd ~/.vim'
+# alias cde='cd ~/.emacs.d'
+# alias cdnv='cd ~/.config/nvim'
+# alias cdvi='cd ~/.vim'
+alias cdconf='cd ~/.0_my_configs_files'
 alias cvisualcode='f ~/Library/Application\ Support/Code/User/'
 
 if [[ $OSTYPE == 'darwin8' ]]; then
