@@ -12,11 +12,14 @@ export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;37;46'
 
 # Path to your oh-my-zsh installation.
-export ZSH=~/.oh-my-zsh
 export PATH=$PATH:~/.mes_scripts_sys/
 export PATH=$PATH:/Applications/treetager/cmd
 export PATH=$PATH:/Applications/treetager/bin
 export PATH=$PATH:/usr/local/Cellar/python/3.7.3/Frameworks/Python.framework/Versions/3.7/bin
+
+
+export ZSH=~/.oh-my-zsh
+source $ZSH/oh-my-zsh.sh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -81,11 +84,7 @@ HISTFILE=~/.zsh_history
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  #git
-)
-
-source $ZSH/oh-my-zsh.sh
+# plugins=( #git )
 
 # User configuration
 
@@ -97,10 +96,11 @@ source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
+export TERMINAL_MODULES_PATH=~/.0_my_configs_files/terminaux
+
 # ======= PROMPT =======
 
-source ~/.0_my_configs_files/terminaux/terminaux_prompt.sh
-
+source $TERMINAL_MODULES_PATH/terminaux_prompt.sh
 
 # ===================================================================
 
@@ -122,10 +122,9 @@ fi
 # if you don't want that :
 # [ -z "$TMUX"  ] && { tmux attach || exec tmux new-session;}
 
-
 # ======= ALIASES =======
 
-source ~/.0_my_configs_files/terminaux/terminaux_alias.sh
+source $TERMINAL_MODULES_PATH/terminaux_alias.sh
 
 ###############################################
 
