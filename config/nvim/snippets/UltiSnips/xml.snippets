@@ -1,0 +1,38 @@
+priority -50
+
+snippet envXML "XML declaration" b
+<?xml version="1.0" encoding="utf8" standalone="no" ?>
+
+$0
+endsnippet
+# ===============================================================================================
+
+
+snippet tag_s "Simple tag" b
+<${1:tag}>
+	${2:${VISUAL}}
+</$1>
+endsnippet
+# ===============================================================================================
+
+snippet tag_i "Inline simple tag" b
+<${1:tag}> ${2:${VISUAL}} </$1>
+endsnippet
+# ===============================================================================================
+
+snippet tag_o "Tag with option" b
+<${1:tag} ${2:option}="${3:value}">
+	${4:${VISUAL}}
+</$1>
+endsnippet
+# ===============================================================================================
+
+
+
+
+
+# snippet ti "Inline tag" b
+# <${1:tag}>
+#     ${2:${VISUAL}}
+# </${1/([\w:._-]+).*/$1/}>
+# endsnippet

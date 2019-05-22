@@ -148,12 +148,22 @@ syntax on "coloration syntaxique
 set colorcolumn=120 "color the line if to long
 set showmatch "highlight matching [{()}]
 set showcmd "show command
+" set termguicolors
 
 autocmd Bufread,BufNewFile *.md set filetype=markdown " Vim interprets .md as 'modula2' otherwise, see :set filetype?
 
 if has("gui_vimr")
     colorscheme solarized8
 endif
+
+set background=light
+"set background=dark
+
+" colorscheme OceanicNext
+" colorscheme solarized8
+" colorscheme default
+colorscheme gruvbox
+" colorscheme fahrenheit
 
 " remove ugly vertical lines on window division
 "set fillchars+=vert:\
@@ -192,7 +202,7 @@ set incsearch "search as characters are entered
 set ignorecase
 set smartcase  " override the 'ignorecase' when there is uppercase letters
 set hlsearch "highlight matches
-nnoremap <leader><space> :nohlsearch<CR> " Disable search highlighting
+nnoremap <silent><space> :nohlsearch<CR> " Disable search highlighting
 
 set lazyredraw          " redraw only when we need to.
 
@@ -345,6 +355,11 @@ noremap ss :split<CR>
 noremap sv :vsplit<CR>
 noremap sq :q<CR>
 
+"SCROLL
+set scroll=10
+"noremap <C-j> <C-D>
+"noremap <C-k> <C-U>
+
 "" navigation (split)
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
@@ -356,10 +371,18 @@ nnoremap tt :tabnew<space>
 nnoremap tq :tabclose<CR>
 
 "" navigation (tab)
-nnoremap th  :tabfirst<CR>
-nnoremap tj :tabnext<CR>
-nnoremap tk  :tabprev<CR>
-nnoremap tl  :tablast<CR>
+" nnoremap th  :tabfirst<CR>
+" nnoremap tj :tabnext<CR> " no need, nat : gt
+" nnoremap tk  :tabprev<CR> " no need, nat : gT
+" nnoremap tl  :tablast<CR>
+
+" BUFFER
+
+" move among buffers with CTRL
+nnoremap <C-j> :bnext<CR>
+nnoremap <C-k> :bprev<CR>
+nnoremap <Leader>b :ls<CR>:b<Space>
+
 
 " PLUGINS bindings
 
@@ -371,14 +394,19 @@ noremap <silent> <leader>cc :TComment<CR>
 
 " nmap <leader>e :Files<CR>
 nnoremap <leader>o :FZF<CR>
+
 " list open buffers
-nnoremap <leader>b :Buffers<CR>
+" nnoremap <leader>b :Buffers<CR>
+
 " commands finder mapping (all commands)
 nnoremap <leader>c :Commands<CR>
+
 " general code finder in current file mapping (find line. nice)
 nnoremap <leader>l :BLines<CR>
+
 " Lines in loaded buffers
 nnoremap <leader>L :Lines<CR>
+
 " File System Explorer (in horizontal split)
 nnoremap <leader>. :Sexplore<cr>
 

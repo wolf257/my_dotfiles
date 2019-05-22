@@ -17,6 +17,7 @@ export ZSH=~/.oh-my-zsh
 export PATH=$PATH:~/.mes_scripts_sys/
 export PATH=$PATH:/Applications/treetager/cmd
 export PATH=$PATH:/Applications/treetager/bin
+export PATH=$PATH:/usr/local/Cellar/python/3.7.3/Frameworks/Python.framework/Versions/3.7/bin
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -24,7 +25,7 @@ export PATH=$PATH:/Applications/treetager/bin
 #ZSH_THEME="robbyrussell"
 # POWERLEVEL9K_MODE='awesome-fontconfig'
 # ZSH_THEME="powerlevel9k/powerlevel9k"    #"crunch"
-ZSH_THEME="crunch"
+# ZSH_THEME="crunch"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -91,6 +92,60 @@ source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
+# ======= PROMPT =======
+
+# \d – Current date
+# \t – Current time
+# \h – Host name
+# \# – Command number
+# \u – User name
+# \W – Current working directory (ie: Desktop/)
+# \w – Current working directory with full path (ie: /Users/Admin/Desktop/)
+# %1d folder
+
+
+
+COLOR_WHITE="%{$fg[white]%}"
+COLOR_YELLOW="%{$fg[yellow]%}"
+COLOR_MAGENTA="%{$fg[magenta]%}"
+COLOR_CYAN="%{$fg[cyan]%}"
+COLOR_GREEN="%{$fg[green]%}"
+COLOR_RED="%{$fg[red]%}"
+RESET_COLOR="%{$reset_color%}"
+
+# These Git variables are used by the oh-my-zsh git_prompt_info helper:
+ZSH_THEME_GIT_PROMPT_PREFIX="$RESET_COLOR($COLOR_WHITE:$COLOR_GREEN"
+ZSH_THEME_GIT_PROMPT_CLEAN=" $COLOR_GREEN✓$RESET_COLOR"
+ZSH_THEME_GIT_PROMPT_DIRTY=" $COLOR_RED✗$RESET_COLOR"
+
+ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[blue]%}%{✚%G%}"
+ZSH_THEME_GIT_PROMPT_BEHIND="%{↓%G%}"
+ZSH_THEME_GIT_PROMPT_AHEAD="%{↑%G%}"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%G%}"
+
+# Our elements:
+# Time
+CRUNCH_TIME_="$COLOR_WHITE{$COLOR_YELLOW%T$COLOR_WHITE}$RESET_COLOR"
+# perso
+INFO_PERSO="$COLOR_YELLOW%n@%m$RESET_COLOR in "
+
+# pwd + git
+CRUNCH_DIR_="$COLOR_CYAN%2d \$(git_prompt_info) "
+# end
+CRUNCH_PROMPT="$COLOR_WHITE➭ "
+
+# Put it all together!
+# total
+# PROMPT="$CRUNCH_TIME_ $INFO_PERSO$CRUNCH_RVM_$CRUNCH_DIR_$CRUNCH_PROMPT%{$reset_color%}"
+# light
+PROMPT="$CRUNCH_TIME_ $CRUNCH_DIR_$CRUNCH_PROMPT%{$reset_color%}"
+
+
+
+
+
+# ===================================================================
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -100,6 +155,13 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='nvim'
 fi
+
+# TMUX AUTOMATIC
+# this line will exit ssh and terminate the connection once you detach or exit tmux.
+[ -z "$TMUX"  ] && { tmux attach -t new-session || exec tmux new-session && exit; }
+
+# if you don't want that :
+# [ -z "$TMUX"  ] && { tmux attach || exec tmux new-session;}
 
 
 # Compilation flags
@@ -128,7 +190,7 @@ alias ll='ls -alFh'
 alias cdconf='cd ~/.0_my_configs_files'
 alias cvisualcode='f ~/Library/Application\ Support/Code/User/'
 
-if [[ $OSTYPE == 'darwin8' ]]; then
+if [[ $OSTYPE == 'darwin'* ]]; then
     source ~/.zshAliasPerso
 fi
 
@@ -164,6 +226,7 @@ alias edit_vimrcNeo='nvim ~/.config/nvim/init.vim'
 
 alias py3='python3'
 alias pep8check='pycodestyle'
+# alias pip3='python3 -m pip'
 
 alias pl='perl'
 
@@ -172,6 +235,8 @@ alias neoMeConf='mate /usr/local/Cellar/neo4j/3.4.5/libexec/conf/neo4j.conf'
 
 alias vi='vim'
 alias nv='nvim'
+
+alias qtdesign='open -a Designer'
 
 ##############################################
 # Git aliases. start with 'g'

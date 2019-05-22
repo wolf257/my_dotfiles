@@ -102,9 +102,9 @@ sub ${1:functionName} {
 
 endsnippet
 
-# SUB ================================================
+# OPEN OR DIE ================================================
 snippet open_or_die "Open file or die"
-open(${1:HANDLE}, ${2:expression}) or die("${3:message}")
+open(${1:HANDLE}, "${2:<}:encoding(utf8)", "${3:file_link}") or die("${4:message}");
 
 $0
 endsnippet
