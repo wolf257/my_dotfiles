@@ -282,7 +282,7 @@ alias gh='git help'
 ###############################################
 
 # we will use instead of the regular git when we want to interact with our configuration repository.
-alias config='/usr/bin/git --git-dir=$HOME/.mydotfiles/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.0_my_configs_files/.git --work-tree=$HOME/.0_my_configs_files/'
 alias config_st='config status'
 alias config_a='config add'
 alias config_coam='config commit -am'
